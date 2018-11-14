@@ -1,0 +1,85 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-2 text-right">
+            <label>Responsable:</label>
+        </div>
+        <div class="col-sm-4">
+            <input type="text" name="respBuscar" ng-model="catTar.respBuscar" class="form-control form-control-sm">
+        </div>
+        <div class="col-sm-2 text-right">
+            <label>Categoria:</label>
+        </div>
+        <div class="col-sm-4">
+            <input type="text" name="categoriaBuscar" ng-model="catTar.categoriaBuscar" class="form-control form-control-sm">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2 text-right">
+            <label>Fecha de Inicio:</label>
+        </div>
+        <div class="col-sm-3">
+            <input type="date" id="fechaInicioBuscar" ng-model="catTar.fechaInicioBuscar" name="fechaInicioBuscar" class="form-control form-control-sm">
+        </div>
+        <div class="col-sm-2 text-right">
+            <label>Fecha de Fin:</label>
+        </div>
+        <div class="col-sm-3">
+            <input type="date" id="fechaFinBuscar" ng-model="catTar.fechaFinBuscar" name="fechaFinBuscar" class="form-control form-control-sm">
+        </div>
+        <div class="col-sm-2">
+            <button type="button" name="btnBuscar" class="btn btn-info btn-sm" ng-click="">Buscar</button>
+        </div>
+    </div>
+    <div class="row">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr class="table-secondary">
+                    <th>Titulo</th>
+                    <th>Responsable</th>
+                    <th>Fecha de Inicio</th>
+                    <th>Fecha de Fin</th>
+                    <th>Porcentaje de Avance</th>
+                    <th>Categoria</th>
+                    <th>SubTareas</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="t in catTar.tareas">
+                    <td class="centrar">{{t.titulo}}</td>
+                    <td class="centrar">{{t.responsable.nombre}}</td>
+                    <td class="centrar">{{t.fechaInicio | date:'yyyy/MM/dd'}}</td>
+                    <td class="centrar">{{t.fechaFin | date:'yyyy/MM/dd'}}</td>
+                    <td class="centrar">
+                        <div class="progress">
+                          <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: {{t.avance}}%;" aria-valuenow="{{t.avance}}" aria-valuemin="0" aria-valuemax="100">{{t.avance}}%</div>
+                        </div>
+                    </td>
+                    <td class="centrar">{{t.categoria}}</td>
+                    <td class="centrar">
+                        <!-- {{((t.subtarea)?'t.subtarea': 0)}} -->
+                        <button type="button" name="btnVerSubtareas" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalSubtareas" ng-click="">Ver</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- MODAL -->
+    <div class="modal fade" id="modalSubtareas" tabindex="-1" role="dialog" aria-labelledby="modalSubtareasLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalSubtareasLabel">Subtareas</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <!-- contenido -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

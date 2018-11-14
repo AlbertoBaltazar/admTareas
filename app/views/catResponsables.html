@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="row">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr class="table-secondary">
+                    <th style="width:10%">No.</th>
+                    <th style="width:70%">NOMBRE</th>
+                    <th style="width:20%"><button type="button" name="btnBuscarResp" class="btn btn-light btn-sm" data-toggle="modal" data-target="#modalResponsables" ng-click="catRes.cambiarTitulo(1)">Agregar</button></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="res in catRes.responsables">
+                    <td class="centrar">{{$index + 1}}</td>
+                    <td>{{res.nombre}}</td>
+                    <td class="centrar">
+                        <button type="button" name="btnEditar" class="btn btn-primary btn-sm" style="color: white; margin-right: 10px;" ng-click="catRes.cambiarTitulo(0, res)" data-toggle="modal" data-target="#modalResponsables">Editar</button>
+                        <button type="button" name="btnEliminar" class="btn btn-secondary btn-sm" style="color: white; margin-left: 10px;" ng-click="catRes.borrar(res)">Eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- MODAL -->
+    <div class="modal fade" id="modalResponsables" tabindex="-1" role="dialog" aria-labelledby="modalResponsablesLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalResponsablesLabel">{{catRes.modalTitle}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <label for="nombreResp" class="align-middle">Nombre:</label>
+                            </div>
+                            <div class="col-sm-10">
+                                <input id="nombreResp" type="text" name="nombreResp" class="form-control" ng-model="catRes.nombreResp">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" ng-click="catRes.guardar()">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

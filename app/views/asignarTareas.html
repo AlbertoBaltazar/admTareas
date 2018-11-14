@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-2 text-right">
+            <label>Titulo:</label>
+        </div>
+        <div class="col-sm-4">
+            <input class="form-control form-control-sm" type="text" name="nomTarea" id="nomTarea" placeholder="Titulo" ng-model="asiTar.nomTarea">
+        </div>
+        <div class="col-sm-2 text-right">
+            <label>Responsable:</label>
+        </div>
+        <div class="col-sm-4">
+            <select class="form-control form-control-sm" ng-options="r.nombre for r in asiTar.responsables" ng-model="asiTar.idResponsable">
+                <option value="" disabled>Seleccione...</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2 text-right">
+            <label>Fecha de Inicio:</label>
+        </div>
+        <div class="col-sm-4">
+            <input type="date" id="fechaInicio" ng-model="asiTar.fechaInicio" name="fechaInicio" class="form-control form-control-sm">
+        </div>
+        <div class="col-sm-2 text-right">
+            <label>Fecha de Fin:</label>
+        </div>
+        <div class="col-sm-4">
+            <input type="date" id="fechaFin" ng-model="asiTar.fechaFin" name="fechaFin" class="form-control form-control-sm">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2 text-right">
+            <label>Categoria:</label>
+        </div>
+        <div class="col-sm-4">
+            <input type="text" name="nomCategoria" class="form-control form-control-sm" id="nomCategoria" ng-model="asiTar.nomCategoria" placeholder="Categoria">
+        </div>
+        <div class="col-sm-2 text-right">
+            <label>Porcentaje de Avance:</label>
+        </div>
+        <div class="col-sm-3">
+            <input type="text" name="prcAvance" class="form-control form-control-sm" id="prcAvance" ng-model="asiTar.prcAvance" placeholder="% de Avance">
+        </div>
+        <div class="col-sm-1">
+            <button type="button" name="btnSubTarea" id="btnSubTarea" class="btn btn-info btn-sm" ng-click="asiTar.guardar()">Guardar</button>
+        </div>
+    </div>
+</div>
