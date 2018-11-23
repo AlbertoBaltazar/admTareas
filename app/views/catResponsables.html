@@ -18,6 +18,11 @@
                     </td>
                 </tr>
             </tbody>
+            <tfoot ng-hide="(catRes.responsables)">
+                <tr>
+                    <td colspan="3" class="centrar">Sin datos que mostrar</td>
+                </tr>
+            </tfoot>
         </table>
     </div>
     <!-- MODAL -->
@@ -26,7 +31,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalResponsablesLabel">{{catRes.modalTitle}}</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="catRes.cerrarModal()">
                       <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -43,7 +48,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="catRes.cerrarModal()">Cancelar</button>
                     <button type="button" class="btn btn-primary" ng-click="catRes.guardar()">Guardar</button>
                 </div>
             </div>

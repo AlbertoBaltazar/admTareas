@@ -17,6 +17,7 @@ angular
                 catRes._id = data._id;
             }else {
                 catRes.editar = false;
+                catRes.nombreResp = "";
                 catRes.modalTitle = "Agregar Responsable";
             }
         }

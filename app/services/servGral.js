@@ -39,8 +39,7 @@ angular
         }
 
         admServ.saveTarea = function(datos, callback){
-            debugger;
-            $http.post(url+"tareas").then(function (res) {
+            $http({method:'post',url:url+"tareas", data:datos}).then(function (res) {
                 callback(res.data);
             }, function(err) {
                 callback(err)
@@ -48,10 +47,43 @@ angular
         }
 
         admServ.getTareas = function(callback) {
-            var resultado;
             $http.get(url+"tareas").then(function(res) {
                 callback(res.data);
             }, function (err) {
+                callback(err);
+            });
+        }
+
+        admServ.getSubtareas = function(id, callback) {
+            var urlTemp = url + "subtareas/" + id;
+            $http.get(urlTemp).then(function (res) {
+                callback(res.data);
+            }, function (err) {
+                callback(err);
+            })
+        }
+
+        admServ.saveSubTarea = function(datos, callback) {
+            var urlTemp = url + "subtareas";
+            if (datos.editar) {
+                urlTemp = urlTemp + "/" +datos._id
+            }
+            $http({
+                method:((datos.editar) ? 'put' : 'post'),
+                url:urlTemp,
+                data:datos
+            }).then(function(res) {
+                callback(res.data);
+            }, function(err) {
+                callback(err)
+            });
+        }
+
+        admServ.deleteSubtarea = function(datos, callback) {
+            var urlTemp = url + "subtareas/" + datos._id
+            $http.delete(urlTemp).then(function(res) {
+                callback(res.data);
+            }, function(err) {
                 callback(err);
             });
         }

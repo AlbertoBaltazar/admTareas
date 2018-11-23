@@ -2,11 +2,12 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var subTareasSchema = new Schema({
+    idTareaPadre: String,
     nombre: String,
-    responsable: {type:Schema.ObjectId, ref: 'Responsables'},
+    responsable: String,
     fechaFin: {type: Date, default:Date.now}
 });
 
-var Subtareas = mongoose.model('Subtareas', subTareasSchema);
+var SubTareas = mongoose.model('SubTareas', subTareasSchema);
 
-model.exports = Subtareas;
+module.exports = SubTareas;
